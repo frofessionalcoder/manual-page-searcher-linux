@@ -1,0 +1,46 @@
+<html>
+
+	<head>
+		<title>
+			Linux Man Page Search Online
+		</title>
+
+	</head>
+
+	<body>
+
+		<center>
+			<p>You can use this application to search the Linux Manual (man) for commands!!! This is my first ever project, hope you like it :)</p>
+			 <form action="" method="post">
+			  <label for="command">Command :</label><br>
+			  <input type="text" id="command" name="command"><br>
+			  <input type="submit" value="search">
+			</form>
+			<br><br>
+			{% if results %}
+			Results for the searched Command: 
+			<br><br>
+
+				<textarea readonly style="resize:none;" id="results_display" name="results" rows="30" cols="100">
+				{{results}}
+				</textarea>
+
+			{% endif %}
+			<br><br>
+			Recent Searches: 
+
+			<ul>
+				{% for recent in recents %}
+					<li> {{ recent }}</li>
+
+				{% empty %}
+				<li>No recent searches</li>
+				{% endfor %}
+			</ul>
+		</center>
+
+		<!-- Note to self: Implement the things mentioned in TODO as soon as possbile. -->
+
+	</body>
+
+</html>

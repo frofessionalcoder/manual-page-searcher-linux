@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    {% load static %}
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>linxmanual</title>
+    <link rel="stylesheet" href="{% static 'assets/bootstrap/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/fonts/fontawesome-all.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/styles.min.css' %}">
+</head>
+
+<body>
+    <div class="row">
+        <div class="col" style="margin: 30px;">
+            <h1 id="title" style="text-align: center;margin: 34px;">Linux Manual Page Search Online</h1>
+            <p id="desc" style="text-align: center;margin: -13px;">You can use this application to search the Linux Manual (man) for commands! This is my first ever project, so hope you like it :)<br>This application is&nbsp;<a href="https://github.com/teja156">open source</a>&nbsp;!!!!!&nbsp;<br></p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-10 offset-md-1">
+            <div class="card m-auto" style="max-width:850px">
+                <div class="card-body">
+                    <form class="d-flex align-items-center" action="" method="POST"><i class="fas fa-search d-none d-sm-block h4 text-body m-0"></i><input class="form-control form-control-lg flex-shrink-1 form-control-borderless" type="search" placeholder="Enter Command to Search" name="command" id="command"><button class="btn btn-success btn-lg" type="submit">Search</button></form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <center>
+    <br><br>
+            {% if results %}
+            Results for the searched Command: 
+            <br><br>
+
+                <textarea readonly style="resize:none;" id="results_display" name="results" rows="30" cols="100">
+                {{results}}
+                </textarea>
+
+            {% endif %}
+            <br><br>
+            Recent Searches: 
+
+            <ul>
+                {% for recent in recents %}
+                    <li> {{ recent }}</li>
+
+                {% empty %}
+                <li>No recent searches</li>
+                {% endfor %}
+            </ul>
+    </center>
+
+    <script src="{% static 'assets/bootstrap/js/bootstrap.min.js' %}"></script>
+</body>
+
+</html>
